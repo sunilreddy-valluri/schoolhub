@@ -4,6 +4,7 @@ import { Bell, LogOut, Menu, Settings, User } from 'lucide-react'
 
 interface DashboardHeaderProps {
   onMenuOpen: () => void
+  isMenuOpen?: boolean
 }
 
 export function DashboardHeader({ onMenuOpen }: DashboardHeaderProps) {

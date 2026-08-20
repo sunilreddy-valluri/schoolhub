@@ -1,5 +1,5 @@
 import { GraduationCap, LogOut } from 'lucide-react'
-import { Link, useLocation } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import { dashboardIcons } from '../dashboard/iconMap'
 
 export interface DashboardNavItem {
@@ -11,6 +11,7 @@ export interface DashboardNavItem {
 interface DashboardSidebarProps {
   navItems: DashboardNavItem[]
   onNavigate?: () => void
+  activePath?: string
 }
 
 export function DashboardSidebar({ navItems, onNavigate }: DashboardSidebarProps) {
@@ -38,7 +39,7 @@ export function DashboardSidebar({ navItems, onNavigate }: DashboardSidebarProps
                 to={item.href}
                 key={item.label}
                 onClick={onNavigate}
-                aria-current={active ? 'page' : undefined}
+                aria-current={isActive ? 'page' : undefined}
               >
                 <Icon size={18} aria-hidden="true" />
                 <span>{item.label}</span>
@@ -49,14 +50,24 @@ export function DashboardSidebar({ navItems, onNavigate }: DashboardSidebarProps
       </div>
 
       <div className="dashboard-sidebar__bottom">
-        <div className="dashboard-user">
+        <button
+          className="dashboard-user dashboard-user-button"
+          type="button"
+          onClick={handleProfileClick}
+          aria-label="View user profile"
+        >
           <span className="dashboard-avatar" aria-hidden="true">SR</span>
           <span className="dashboard-user__details">
             <strong>Suneel Reddy</strong>
             <small>School Administrator</small>
           </span>
-        </div>
-        <button className="dashboard-logout" type="button">
+        </button>
+        <button
+          className="dashboard-logout"
+          type="button"
+          onClick={handleLogout}
+          aria-label="Log out of SchoolHub"
+        >
           <LogOut size={17} aria-hidden="true" />
           <span>Logout</span>
         </button>
