@@ -1,0 +1,50 @@
+export const designSystem = {
+  colors: {
+    primary: '#2563EB',
+    primaryHover: '#1D4ED8',
+    primaryLight: '#EFF6FF',
+    secondary: '#0F172A',
+    background: '#F8FAFC',
+    surface: '#FFFFFF',
+    textPrimary: '#0F172A',
+    textSecondary: '#475569',
+    textMuted: '#64748B',
+    border: '#E2E8F0',
+    success: '#16A34A',
+    warning: '#F59E0B',
+    error: '#DC2626',
+    info: '#2563EB',
+  },
+  typography: {
+    fontFamily: 'Inter, system-ui, sans-serif',
+    pageHeading: '32px',
+    sectionHeading: '24px',
+    cardHeading: '18px',
+    body: '16px',
+    small: '13px',
+    button: '14px',
+  },
+  spacing: {
+    xs: '4px',
+    sm: '8px',
+    md: '12px',
+    lg: '16px',
+    xl: '24px',
+    '2xl': '32px',
+    '3xl': '40px',
+    '4xl': '48px',
+    '5xl': '64px',
+  },
+  radius: {
+    small: '6px',
+    default: '8px',
+    medium: '12px',
+    large: '16px',
+  },
+  shadows: {
+    card: '0 12px 32px rgba(15, 23, 42, 0.06)',
+    focus: '0 0 0 3px rgba(37, 99, 235, 0.16)',
+  },
+} as const
+
+export type DesignSystem = typeof designSystem
