@@ -5,6 +5,7 @@ import { DashboardPage } from '../pages/dashboard/DashboardPage'
 import { ClassesPage } from '../pages/classes/ClassesPage'
 import { CreateClassPage } from '../pages/classes/CreateClassPage'
 import { CreateAssignmentPage } from '../pages/assignments/CreateAssignmentPage'
+import { AssignmentsPage } from '../pages/assignments/AssignmentsPage'
 import { AttendancePage } from '../pages/dashboard/AttendancePage'
 
 export function AppRoutes() {
@@ -15,6 +16,7 @@ export function AppRoutes() {
       <Route path="/dashboard" element={<DashboardPage />} />
       <Route path="/classes" element={<ClassesPage />} />
       <Route path="/classes/new" element={<CreateClassPage />} />
+      <Route path="/assignments" element={<AssignmentsPage />} />
       <Route path="/assignments/new" element={<CreateAssignmentPage />} />
       <Route path="/attendance" element={<AttendancePage />} />
       <Route path="*" element={<Navigate to="/login" replace />} />
