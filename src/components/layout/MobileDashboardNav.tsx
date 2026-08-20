@@ -5,9 +5,10 @@ interface MobileDashboardNavProps {
   navItems: DashboardNavItem[]
   isOpen: boolean
   onClose: () => void
+  activePath?: string
 }
 
-export function MobileDashboardNav({ navItems, isOpen, onClose }: MobileDashboardNavProps) {
+export function MobileDashboardNav({ navItems, isOpen, onClose, activePath }: MobileDashboardNavProps) {
   if (!isOpen) return null
 
   return (
@@ -23,7 +24,7 @@ export function MobileDashboardNav({ navItems, isOpen, onClose }: MobileDashboar
             <X size={20} aria-hidden="true" />
           </button>
         </div>
-        <DashboardSidebar navItems={navItems} onNavigate={onClose} />
+        <DashboardSidebar navItems={navItems} onNavigate={onClose} activePath={activePath} />
       </div>
     </div>
   )
