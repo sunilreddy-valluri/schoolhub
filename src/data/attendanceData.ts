@@ -18,7 +18,7 @@ export interface StudentAttendance {
 // Sample data for demonstration
 export const sampleStudentAttendance: StudentAttendance = {
     studentId: 'STU001',
-    studentName: 'John Smith',
+    studentName: 'Bhargav',
     studentGrade: '10-A',
     records: [
         { id: '1', date: new Date('2024-01-22'), status: 'Present' },

@@ -1,16 +1,17 @@
 import { Card } from '../ui/Card'
 import { AttendanceStats } from './AttendanceStats'
-import { AttendanceRecordItem } from './AttendanceRecordItem'
+import { EditableAttendanceRecordItem } from './EditableAttendanceRecordItem'
 import { MonthlySummary } from './MonthlySummary'
 import { DateRangeFilter, type DateRange } from './DateRangeFilter'
-import { type StudentAttendance } from '../../data/attendanceData'
+import { type StudentAttendance, type AttendanceRecord } from '../../data/attendanceData'
 import { useState, useMemo } from 'react'
 
 interface StudentProfileProps {
     student: StudentAttendance
 }
 
-export function StudentProfile({ student }: StudentProfileProps) {
+export function StudentProfile({ student: initialStudent }: StudentProfileProps) {
+    const [student, setStudent] = useState(initialStudent)
     const [dateRange, setDateRange] = useState<DateRange>({
         startDate: null,
         endDate: null,
@@ -44,6 +45,13 @@ export function StudentProfile({ student }: StudentProfileProps) {
             attendancePercentage,
         }
     }, [filteredRecords])
+
+    const handleRecordUpdate = (updatedRecord: AttendanceRecord) => {
+        setStudent((prev) => ({
+            ...prev,
+            records: prev.records.map((r) => (r.id === updatedRecord.id ? updatedRecord : r)),
+        }))
+    }
 
     return (
         <div className="student-profile">
@@ -79,14 +87,20 @@ export function StudentProfile({ student }: StudentProfileProps) {
 
             {/* Attendance History */}
             <Card className="student-profile__history">
-                <h3 className="student-profile__history-title">Attendance History</h3>
+                <h3 className="student-profile__history-title">📋 Attendance History (Click edit icon to modify)</h3>
                 <div className="student-profile__history-list">
                     {filteredRecords.length === 0 ? (
                         <div className="student-profile__empty">No attendance records found for the selected period</div>
                     ) : (
                         filteredRecords
                             .sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime())
-                            .map((record) => <AttendanceRecordItem key={record.id} record={record} />)
+                            .map((record) => (
+                                <EditableAttendanceRecordItem
+                                    key={record.id}
+                                    record={record}
+                                    onRecordUpdate={handleRecordUpdate}
+                                />
+                            ))
                     )}
                 </div>
             </Card>
