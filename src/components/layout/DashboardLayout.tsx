@@ -5,7 +5,7 @@ import { MobileDashboardNav } from './MobileDashboardNav'
 
 const navItems: DashboardNavItem[] = [
   { label: 'Dashboard', icon: 'school', href: '/dashboard' },
-  { label: 'Students', icon: 'users', href: '#students' },
+  { label: 'Students', icon: 'users', href: '/students' },
   { label: 'Teachers', icon: 'graduationCap', href: '#teachers' },
   { label: 'Classes', icon: 'bookOpen', href: '#classes' },
   { label: 'Attendance', icon: 'clipboardCheck', href: '#attendance' },
