@@ -16,8 +16,8 @@ export function AttendanceStats({
     attendancePercentage,
 }: AttendanceStatsProps) {
     const getPercentageColor = (percentage: number): string => {
-        if (percentage >= 95) return 'success'
-        if (percentage >= 85) return 'warning'
+        if (percentage >= 90) return 'success'
+        if (percentage >= 75) return 'warning'
         return 'error'
     }
 

@@ -1364,31 +1364,32 @@ a {
 /* Student Attendance History Styles */
 .student-profile {
   display: grid;
-  gap: 24px;
+  gap: 16px;
 }
 
 .student-profile__header {
-  padding: 24px;
+  padding: 16px 20px;
   display: flex;
   align-items: center;
-  gap: 16px;
+  gap: 12px;
 }
 
 .student-profile__avatar {
   display: grid;
   place-items: center;
-  width: 56px;
-  height: 56px;
+  flex: 0 0 40px;
+  width: 40px;
+  height: 40px;
   color: var(--color-primary);
   background: var(--color-primary-light);
-  border-radius: var(--radius-medium);
-  font-size: 24px;
+  border-radius: var(--radius-default);
+  font-size: 16px;
   font-weight: 700;
 }
 
 .student-profile__info {
   display: flex;
-  gap: 16px;
+  gap: 12px;
   align-items: center;
   flex: 1;
   min-width: 0;
@@ -1396,92 +1397,102 @@ a {
 
 .student-profile__details {
   display: grid;
-  gap: 4px;
+  gap: 2px;
   min-width: 0;
 }
 
 .student-profile__name {
   margin: 0;
   color: var(--color-text-primary);
-  font-size: 20px;
-  font-weight: 700;
+  font-size: 16px;
+  font-weight: 600;
   letter-spacing: -0.02em;
   line-height: 1.2;
 }
 
 .student-profile__meta {
   margin: 0;
-  color: var(--color-text-secondary);
-  font-size: 13px;
+  color: var(--color-text-muted);
+  font-size: 12px;
   line-height: 1.4;
 }
 
 .student-profile__stats {
-  padding: 24px;
+  padding: 16px 20px;
 }
 
 .attendance-stats {
   display: grid;
-  gap: 24px;
+  gap: 16px;
 }
 
 .attendance-stats__percentage {
   display: grid;
-  gap: 12px;
+  gap: 8px;
 }
 
 .attendance-percentage {
   display: grid;
   place-items: center;
-  padding: 24px;
-  border-radius: var(--radius-medium);
+  padding: 16px;
+  border-radius: var(--radius-default);
   text-align: center;
+  border: 1px solid var(--color-border);
 }
 
 .attendance-percentage--success {
   color: var(--color-success);
-  background: var(--color-success-light);
+  background: rgba(22, 163, 74, 0.05);
+  border-color: var(--color-success);
 }
 
 .attendance-percentage--warning {
   color: var(--color-warning-text);
-  background: var(--color-warning-light);
+  background: rgba(180, 83, 9, 0.05);
+  border-color: var(--color-warning);
 }
 
 .attendance-percentage--error {
   color: var(--color-error);
-  background: var(--color-error-light);
+  background: rgba(220, 38, 38, 0.05);
+  border-color: var(--color-error);
 }
 
 .attendance-percentage__value {
-  font-size: 32px;
+  font-size: 28px;
   font-weight: 700;
   letter-spacing: -0.05em;
   line-height: 1;
 }
 
 .attendance-percentage__label {
-  margin-top: 6px;
-  font-size: 13px;
+  margin-top: 4px;
+  font-size: 12px;
   font-weight: 500;
-  opacity: 0.8;
+  opacity: 0.9;
 }
 
 .attendance-stats__totals {
   display: grid;
   grid-template-columns: repeat(4, minmax(0, 1fr));
-  gap: 16px;
+  gap: 12px;
 }
 
 .attendance-total {
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 8px;
-  padding: 16px;
+  gap: 6px;
+  padding: 12px;
   background: var(--color-background);
   border-radius: var(--radius-default);
   text-align: center;
+  border: 1px solid transparent;
+  transition: border-color 150ms ease;
+}
+
+.attendance-total:hover {
+  border-color: var(--color-border);
 }
 
 .attendance-total--present {
@@ -1506,31 +1517,33 @@ a {
 
 .attendance-total__content {
   display: grid;
-  gap: 4px;
+  gap: 2px;
   min-width: 0;
 }
 
 .attendance-total__count {
-  font-size: 20px;
+  font-size: 18px;
   font-weight: 700;
   line-height: 1;
 }
 
 .attendance-total__label {
-  font-size: 12px;
+  font-size: 11px;
   font-weight: 500;
   opacity: 0.8;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
 }
 
 /* Date Range Filter */
 .student-profile__filter {
-  padding: 24px;
+  padding: 16px 20px;
 }
 
 .student-profile__filter-title {
-  margin: 0 0 16px;
+  margin: 0 0 12px;
   color: var(--color-text-primary);
-  font-size: 16px;
+  font-size: 14px;
   font-weight: 600;
   letter-spacing: -0.02em;
 }
@@ -1549,13 +1562,13 @@ a {
   justify-content: space-between;
   gap: 8px;
   width: 100%;
-  min-height: 44px;
+  min-height: 40px;
   padding: 8px 12px;
   color: var(--color-text-primary);
   background: var(--color-background);
   border: 1px solid var(--color-border);
   border-radius: var(--radius-default);
-  font-size: 14px;
+  font-size: 13px;
   font-weight: 500;
   transition: border-color 150ms ease, background-color 150ms ease;
 }
@@ -1648,29 +1661,29 @@ a {
 
 /* Attendance History */
 .student-profile__history {
-  padding: 24px;
+  padding: 16px 20px;
 }
 
 .student-profile__history-title {
-  margin: 0 0 16px;
+  margin: 0 0 12px;
   color: var(--color-text-primary);
-  font-size: 16px;
+  font-size: 14px;
   font-weight: 600;
   letter-spacing: -0.02em;
 }
 
 .student-profile__history-list {
   display: grid;
-  gap: 12px;
+  gap: 8px;
   max-height: 500px;
   overflow-y: auto;
 }
 
 .student-profile__empty {
-  padding: 32px 20px;
+  padding: 24px 16px;
   text-align: center;
   color: var(--color-text-muted);
-  font-size: 14px;
+  font-size: 13px;
   background: var(--color-background);
   border-radius: var(--radius-default);
 }
@@ -1678,8 +1691,8 @@ a {
 .attendance-record {
   display: flex;
   align-items: start;
-  gap: 12px;
-  padding: 12px;
+  gap: 10px;
+  padding: 10px;
   border-radius: var(--radius-default);
   background: var(--color-background);
   transition: background-color 150ms ease;
@@ -1712,41 +1725,41 @@ a {
 
 .attendance-record__content {
   display: grid;
-  gap: 4px;
+  gap: 2px;
   min-width: 0;
 }
 
 .attendance-record__date {
   color: var(--color-text-primary);
-  font-size: 14px;
+  font-size: 13px;
   font-weight: 600;
 }
 
 .attendance-record__status {
   color: var(--color-text-secondary);
-  font-size: 13px;
+  font-size: 12px;
 }
 
 .attendance-record__note {
   color: var(--color-text-muted);
-  font-size: 12px;
+  font-size: 11px;
   font-style: italic;
 }
 
 /* Monthly Summary */
 .student-profile__monthly {
-  padding: 24px;
+  padding: 16px 20px;
 }
 
 .monthly-summary {
   display: grid;
-  gap: 16px;
+  gap: 12px;
 }
 
 .monthly-summary__title {
   margin: 0;
   color: var(--color-text-primary);
-  font-size: 16px;
+  font-size: 14px;
   font-weight: 600;
   letter-spacing: -0.02em;
 }
@@ -1867,49 +1880,87 @@ a {
 
 @media (max-width: 480px) {
   .student-profile__header {
-    padding: 16px;
-    gap: 12px;
+    padding: 12px 16px;
+    gap: 10px;
   }
 
   .student-profile__avatar {
-    width: 48px;
-    height: 48px;
-    font-size: 20px;
+    width: 36px;
+    height: 36px;
+    font-size: 14px;
+  }
+
+  .student-profile__name {
+    font-size: 14px;
+  }
+
+  .student-profile__meta {
+    font-size: 11px;
   }
 
   .student-profile__stats {
-    padding: 16px;
+    padding: 12px 16px;
   }
 
   .student-profile__filter,
   .student-profile__history,
   .student-profile__monthly {
-    padding: 16px;
+    padding: 12px 16px;
   }
 
   .attendance-stats {
-    gap: 16px;
+    gap: 12px;
   }
 
   .attendance-stats__totals {
     grid-template-columns: repeat(2, minmax(0, 1fr));
-    gap: 12px;
+    gap: 10px;
   }
 
   .attendance-total {
-    padding: 12px;
+    padding: 10px;
   }
 
   .attendance-total__count {
-    font-size: 18px;
+    font-size: 16px;
+  }
+
+  .attendance-percentage {
+    padding: 12px;
   }
 
   .attendance-percentage__value {
-    font-size: 28px;
+    font-size: 24px;
+  }
+
+  .attendance-percentage__label {
+    font-size: 11px;
+    margin-top: 3px;
+  }
+
+  .student-profile__history-title,
+  .student-profile__filter-title,
+  .monthly-summary__title {
+    font-size: 13px;
+    margin-bottom: 10px;
   }
 
   .student-profile__history-list {
     max-height: 400px;
+    gap: 6px;
+  }
+
+  .attendance-record {
+    padding: 8px;
+    gap: 8px;
+  }
+
+  .attendance-record__date {
+    font-size: 12px;
+  }
+
+  .attendance-record__status {
+    font-size: 11px;
   }
 
   .date-range-filter__dropdown {
