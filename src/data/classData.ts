@@ -82,15 +82,15 @@ export const sections: Section[] = [
 ]
 
 export const teachers: Teacher[] = [
+  { id: 'teacher-3',  firstName: 'Anita',    lastName: 'Verma',     fullName: 'Anita Verma',     subject: 'English' },
+  { id: 'teacher-6',  firstName: 'Arjun',    lastName: 'Pillai',    fullName: 'Arjun Pillai',    subject: 'Physics' },
+  { id: 'teacher-8',  firstName: 'Deepak',   lastName: 'Menon',     fullName: 'Deepak Menon',    subject: 'Biology' },
+  { id: 'teacher-7',  firstName: 'Kavitha',  lastName: 'Reddy',     fullName: 'Kavitha Reddy',   subject: 'Chemistry' },
+  { id: 'teacher-5',  firstName: 'Meena',    lastName: 'Iyer',      fullName: 'Meena Iyer',      subject: 'Hindi' },
   { id: 'teacher-1',  firstName: 'Priya',    lastName: 'Sharma',    fullName: 'Priya Sharma',    subject: 'Mathematics' },
   { id: 'teacher-2',  firstName: 'Rajesh',   lastName: 'Kumar',     fullName: 'Rajesh Kumar',    subject: 'Science' },
-  { id: 'teacher-3',  firstName: 'Anita',    lastName: 'Verma',     fullName: 'Anita Verma',     subject: 'English' },
-  { id: 'teacher-4',  firstName: 'Suresh',   lastName: 'Nair',      fullName: 'Suresh Nair',     subject: 'Social Studies' },
-  { id: 'teacher-5',  firstName: 'Meena',    lastName: 'Iyer',      fullName: 'Meena Iyer',      subject: 'Hindi' },
-  { id: 'teacher-6',  firstName: 'Arjun',    lastName: 'Pillai',    fullName: 'Arjun Pillai',    subject: 'Physics' },
-  { id: 'teacher-7',  firstName: 'Kavitha',  lastName: 'Reddy',     fullName: 'Kavitha Reddy',   subject: 'Chemistry' },
-  { id: 'teacher-8',  firstName: 'Deepak',   lastName: 'Menon',     fullName: 'Deepak Menon',    subject: 'Biology' },
   { id: 'teacher-9',  firstName: 'Sunita',   lastName: 'Joshi',     fullName: 'Sunita Joshi',    subject: 'Computer Science' },
+  { id: 'teacher-4',  firstName: 'Suresh',   lastName: 'Nair',      fullName: 'Suresh Nair',     subject: 'Social Studies' },
   { id: 'teacher-10', firstName: 'Vikram',   lastName: 'Singh',     fullName: 'Vikram Singh',    subject: 'Physical Education' },
 ]
 
