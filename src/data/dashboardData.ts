@@ -8,6 +8,7 @@ export type DashboardIconName =
   | 'calendarCheck'
   | 'userCheck'
   | 'layers'
+  | 'user'
 
 export interface Statistic {
   label: string

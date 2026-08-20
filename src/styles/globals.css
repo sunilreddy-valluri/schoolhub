@@ -1202,7 +1202,8 @@ a {
 .mobile-dashboard-nav {
   position: fixed;
   inset: 0;
-  z-index: 20;
+  z-index: 50;
+  display: flex;
 }
 
 .mobile-dashboard-nav__backdrop {
@@ -1212,7 +1213,11 @@ a {
   height: 100%;
   padding: 0;
   background: var(--color-overlay);
+  backdrop-filter: blur(2px);
+  -webkit-backdrop-filter: blur(2px);
   border: 0;
+  animation: fadeIn 200ms ease-out;
+  cursor: pointer;
 }
 
 .mobile-dashboard-nav__panel {
@@ -1223,25 +1228,67 @@ a {
   flex-direction: column;
   background: var(--color-surface);
   box-shadow: var(--shadow-drawer);
+  animation: slideDrawerIn 240ms cubic-bezier(0.16, 1, 0.3, 1);
+  z-index: 1;
 }
 
 .mobile-dashboard-nav__header {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 24px 20px;
+  padding: 20px 16px;
   border-bottom: 1px solid var(--color-border);
+  flex-shrink: 0;
 }
 
-.mobile-dashboard-nav .dashboard-sidebar {
+.mobile-dashboard-nav__body {
   flex: 1;
+  padding: 16px 12px;
+  overflow-y: auto;
   min-height: 0;
-  padding: 24px 16px 20px;
-  border: 0;
 }
 
-.mobile-dashboard-nav .dashboard-sidebar__top {
-  gap: 24px;
+.mobile-dashboard-nav__footer {
+  display: grid;
+  gap: 12px;
+  padding: 16px;
+  border-top: 1px solid var(--color-border);
+  background: var(--color-surface);
+  flex-shrink: 0;
+}
+
+.dashboard-user-button {
+  width: 100%;
+  padding: 6px 8px;
+  background: transparent;
+  border: 1px solid transparent;
+  border-radius: var(--radius-default);
+  text-align: left;
+  cursor: pointer;
+  transition: background-color 150ms ease, border-color 150ms ease;
+}
+
+.dashboard-user-button:hover {
+  background: var(--color-primary-light);
+  border-color: var(--color-primary-border);
+}
+
+@keyframes slideDrawerIn {
+  from {
+    transform: translateX(-100%);
+  }
+  to {
+    transform: translateX(0);
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
 }
 
 @keyframes spin {
@@ -1353,11 +1400,38 @@ a {
   }
 
   .dashboard-content {
-    padding: 32px 24px;
+    padding: 24px 16px;
+    max-width: 100vw;
+    overflow-x: hidden;
   }
 
   .dashboard-section--split {
     grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 480px) {
+  .dashboard-header {
+    min-height: 64px;
+    padding: 12px 14px;
+    gap: 10px;
+  }
+
+  .dashboard-header__copy h1 {
+    font-size: 18px;
+  }
+
+  .dashboard-header__copy p {
+    display: none;
+  }
+
+  .dashboard-header__copy .eyebrow {
+    font-size: 10px;
+    margin-bottom: 2px;
+  }
+
+  .dashboard-content {
+    padding: 16px 12px;
   }
 }
 
