@@ -16,18 +16,14 @@ export interface Teacher {
   id: string
   firstName: string
   lastName: string
-  /** Convenience getter used in dropdowns */
   fullName: string
   subject: string
 }
 
 export interface AcademicYear {
   id: string
-  /** Human-readable label, e.g. "2025-26" */
   label: string
-  /** ISO date string for the start of the academic year */
   startDate: string
-  /** ISO date string for the end of the academic year */
   endDate: string
   isCurrent: boolean
 }
@@ -40,12 +36,11 @@ export interface SchoolClass {
   roomNumber: string
   academicYearId: string
   maximumStudents: number
-  /** Derived display label, e.g. "Grade 8 – Section A" */
+  /** Current number of enrolled students */
+  studentCount: number
   displayName: string
   createdAt: string
 }
-
-// ─── Create-class form payload ─────────────────────────────────────────────────
 
 export interface CreateClassPayload {
   gradeId: string
@@ -55,6 +50,8 @@ export interface CreateClassPayload {
   academicYearId: string
   maximumStudents: number
 }
+
+export interface UpdateClassPayload extends CreateClassPayload {}
 
 // ─── Mock data ─────────────────────────────────────────────────────────────────
 
@@ -82,16 +79,16 @@ export const sections: Section[] = [
 ]
 
 export const teachers: Teacher[] = [
-  { id: 'teacher-3',  firstName: 'Anita',    lastName: 'Verma',     fullName: 'Anita Verma',     subject: 'English' },
-  { id: 'teacher-6',  firstName: 'Arjun',    lastName: 'Pillai',    fullName: 'Arjun Pillai',    subject: 'Physics' },
-  { id: 'teacher-8',  firstName: 'Deepak',   lastName: 'Menon',     fullName: 'Deepak Menon',    subject: 'Biology' },
-  { id: 'teacher-7',  firstName: 'Kavitha',  lastName: 'Reddy',     fullName: 'Kavitha Reddy',   subject: 'Chemistry' },
-  { id: 'teacher-5',  firstName: 'Meena',    lastName: 'Iyer',      fullName: 'Meena Iyer',      subject: 'Hindi' },
-  { id: 'teacher-1',  firstName: 'Priya',    lastName: 'Sharma',    fullName: 'Priya Sharma',    subject: 'Mathematics' },
-  { id: 'teacher-2',  firstName: 'Rajesh',   lastName: 'Kumar',     fullName: 'Rajesh Kumar',    subject: 'Science' },
-  { id: 'teacher-9',  firstName: 'Sunita',   lastName: 'Joshi',     fullName: 'Sunita Joshi',    subject: 'Computer Science' },
-  { id: 'teacher-4',  firstName: 'Suresh',   lastName: 'Nair',      fullName: 'Suresh Nair',     subject: 'Social Studies' },
-  { id: 'teacher-10', firstName: 'Vikram',   lastName: 'Singh',     fullName: 'Vikram Singh',    subject: 'Physical Education' },
+  { id: 'teacher-3',  firstName: 'Anita',   lastName: 'Verma',  fullName: 'Anita Verma',   subject: 'English' },
+  { id: 'teacher-6',  firstName: 'Arjun',   lastName: 'Pillai', fullName: 'Arjun Pillai',  subject: 'Physics' },
+  { id: 'teacher-8',  firstName: 'Deepak',  lastName: 'Menon',  fullName: 'Deepak Menon',  subject: 'Biology' },
+  { id: 'teacher-7',  firstName: 'Kavitha', lastName: 'Reddy',  fullName: 'Kavitha Reddy', subject: 'Chemistry' },
+  { id: 'teacher-5',  firstName: 'Meena',   lastName: 'Iyer',   fullName: 'Meena Iyer',    subject: 'Hindi' },
+  { id: 'teacher-1',  firstName: 'Priya',   lastName: 'Sharma', fullName: 'Priya Sharma',  subject: 'Mathematics' },
+  { id: 'teacher-2',  firstName: 'Rajesh',  lastName: 'Kumar',  fullName: 'Rajesh Kumar',  subject: 'Science' },
+  { id: 'teacher-9',  firstName: 'Sunita',  lastName: 'Joshi',  fullName: 'Sunita Joshi',  subject: 'Computer Science' },
+  { id: 'teacher-4',  firstName: 'Suresh',  lastName: 'Nair',   fullName: 'Suresh Nair',   subject: 'Social Studies' },
+  { id: 'teacher-10', firstName: 'Vikram',  lastName: 'Singh',  fullName: 'Vikram Singh',  subject: 'Physical Education' },
 ]
 
 export const academicYears: AcademicYear[] = [
@@ -101,7 +98,6 @@ export const academicYears: AcademicYear[] = [
   { id: 'ay-2027-28', label: '2027-28', startDate: '2027-06-01', endDate: '2028-03-31', isCurrent: false },
 ]
 
-/** In-memory store of created classes (simulates a database table). */
 export const classes: SchoolClass[] = [
   {
     id: 'class-001',
@@ -111,25 +107,121 @@ export const classes: SchoolClass[] = [
     roomNumber: '201',
     academicYearId: 'ay-2026-27',
     maximumStudents: 40,
+    studentCount: 36,
     displayName: 'Grade 7 – Section A',
+    createdAt: new Date().toISOString(),
+  },
+  {
+    id: 'class-002',
+    gradeId: 'grade-7',
+    sectionId: 'section-b',
+    classTeacherId: 'teacher-2',
+    roomNumber: '202',
+    academicYearId: 'ay-2026-27',
+    maximumStudents: 40,
+    studentCount: 38,
+    displayName: 'Grade 7 – Section B',
+    createdAt: new Date().toISOString(),
+  },
+  {
+    id: 'class-003',
+    gradeId: 'grade-8',
+    sectionId: 'section-a',
+    classTeacherId: 'teacher-3',
+    roomNumber: '301',
+    academicYearId: 'ay-2026-27',
+    maximumStudents: 42,
+    studentCount: 40,
+    displayName: 'Grade 8 – Section A',
+    createdAt: new Date().toISOString(),
+  },
+  {
+    id: 'class-004',
+    gradeId: 'grade-8',
+    sectionId: 'section-b',
+    classTeacherId: 'teacher-4',
+    roomNumber: '302',
+    academicYearId: 'ay-2026-27',
+    maximumStudents: 42,
+    studentCount: 35,
+    displayName: 'Grade 8 – Section B',
+    createdAt: new Date().toISOString(),
+  },
+  {
+    id: 'class-005',
+    gradeId: 'grade-9',
+    sectionId: 'section-a',
+    classTeacherId: 'teacher-5',
+    roomNumber: '401',
+    academicYearId: 'ay-2026-27',
+    maximumStudents: 45,
+    studentCount: 43,
+    displayName: 'Grade 9 – Section A',
+    createdAt: new Date().toISOString(),
+  },
+  {
+    id: 'class-006',
+    gradeId: 'grade-9',
+    sectionId: 'section-b',
+    classTeacherId: 'teacher-6',
+    roomNumber: '402',
+    academicYearId: 'ay-2026-27',
+    maximumStudents: 45,
+    studentCount: 29,
+    displayName: 'Grade 9 – Section B',
+    createdAt: new Date().toISOString(),
+  },
+  {
+    id: 'class-007',
+    gradeId: 'grade-10',
+    sectionId: 'section-a',
+    classTeacherId: 'teacher-7',
+    roomNumber: '501',
+    academicYearId: 'ay-2026-27',
+    maximumStudents: 40,
+    studentCount: 40,
+    displayName: 'Grade 10 – Section A',
+    createdAt: new Date().toISOString(),
+  },
+  {
+    id: 'class-008',
+    gradeId: 'grade-10',
+    sectionId: 'section-b',
+    classTeacherId: 'teacher-8',
+    roomNumber: '502',
+    academicYearId: 'ay-2026-27',
+    maximumStudents: 40,
+    studentCount: 33,
+    displayName: 'Grade 10 – Section B',
     createdAt: new Date().toISOString(),
   },
 ]
 
 // ─── Simulated API ─────────────────────────────────────────────────────────────
 
-/**
- * Simulates an async class-creation API call.
- * Returns the newly created class on success, or throws with a message on failure.
- *
- * When a real backend is wired up, replace this function body with an actual
- * fetch/axios call and keep the signature unchanged.
- */
-export async function createClass(payload: CreateClassPayload): Promise<SchoolClass> {
-  // Simulate network latency
-  await new Promise<void>((resolve) => setTimeout(resolve, 800))
+function delay(ms = 600): Promise<void> {
+  return new Promise((resolve) => setTimeout(resolve, ms))
+}
 
-  // Duplicate check: same grade + section + academic year
+/** Fetch all classes (simulates GET /api/classes) */
+export async function getClasses(): Promise<SchoolClass[]> {
+  await delay()
+  // Return a shallow copy so mutations don't silently affect callers
+  return [...classes]
+}
+
+/** Fetch a single class by ID (simulates GET /api/classes/:id) */
+export async function getClassById(id: string): Promise<SchoolClass> {
+  await delay()
+  const found = classes.find((c) => c.id === id)
+  if (!found) throw new Error('Class not found.')
+  return { ...found }
+}
+
+/** Create a new class (simulates POST /api/classes) */
+export async function createClass(payload: CreateClassPayload): Promise<SchoolClass> {
+  await delay(800)
+
   const duplicate = classes.find(
     (c) =>
       c.gradeId === payload.gradeId &&
@@ -137,27 +229,60 @@ export async function createClass(payload: CreateClassPayload): Promise<SchoolCl
       c.academicYearId === payload.academicYearId,
   )
   if (duplicate) {
-    throw new Error(
-      'A class with this grade, section, and academic year already exists.',
-    )
+    throw new Error('A class with this grade, section, and academic year already exists.')
   }
 
-  const grade       = grades.find((g) => g.id === payload.gradeId)
-  const section     = sections.find((s) => s.id === payload.sectionId)
-  const academicYear = academicYears.find((a) => a.id === payload.academicYearId)
+  const grade   = grades.find((g) => g.id === payload.gradeId)
+  const section = sections.find((s) => s.id === payload.sectionId)
 
   const newClass: SchoolClass = {
     id: `class-${Date.now()}`,
     ...payload,
+    studentCount: 0,
     displayName: `${grade?.name ?? 'Unknown'} – ${section?.name ?? 'Unknown'}`,
     createdAt: new Date().toISOString(),
   }
 
-  // Persist to the in-memory store
   classes.push(newClass)
+  return { ...newClass }
+}
 
-  // Unused variable kept to avoid TS warning; academicYear used for future display
-  void academicYear
+/** Update an existing class (simulates PUT /api/classes/:id) */
+export async function updateClass(id: string, payload: UpdateClassPayload): Promise<SchoolClass> {
+  await delay(800)
 
-  return newClass
+  const index = classes.findIndex((c) => c.id === id)
+  if (index === -1) throw new Error('Class not found.')
+
+  // Duplicate check — exclude the current class itself
+  const duplicate = classes.find(
+    (c) =>
+      c.id !== id &&
+      c.gradeId === payload.gradeId &&
+      c.sectionId === payload.sectionId &&
+      c.academicYearId === payload.academicYearId,
+  )
+  if (duplicate) {
+    throw new Error('A class with this grade, section, and academic year already exists.')
+  }
+
+  const grade   = grades.find((g) => g.id === payload.gradeId)
+  const section = sections.find((s) => s.id === payload.sectionId)
+
+  const updated: SchoolClass = {
+    ...classes[index],
+    ...payload,
+    displayName: `${grade?.name ?? 'Unknown'} – ${section?.name ?? 'Unknown'}`,
+  }
+
+  classes[index] = updated
+  return { ...updated }
+}
+
+/** Delete a class (simulates DELETE /api/classes/:id) */
+export async function deleteClass(id: string): Promise<void> {
+  await delay(600)
+  const index = classes.findIndex((c) => c.id === id)
+  if (index === -1) throw new Error('Class not found.')
+  classes.splice(index, 1)
 }
