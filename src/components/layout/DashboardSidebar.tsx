@@ -38,7 +38,7 @@ export function DashboardSidebar({ navItems, onNavigate }: DashboardSidebarProps
                 to={item.href}
                 key={item.label}
                 onClick={onNavigate}
-                aria-current={isActive ? 'page' : undefined}
+                aria-current={active ? 'page' : undefined}
               >
                 <Icon size={18} aria-hidden="true" />
                 <span>{item.label}</span>
