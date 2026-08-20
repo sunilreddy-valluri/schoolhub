@@ -13,7 +13,7 @@ interface AnnouncementFormProps {
 export function AnnouncementForm({ onCancel }: AnnouncementFormProps) {
   const [title, setTitle] = useState('')
   const [content, setContent] = useState('')
-  const [audience, setAudience] = useState<AnnouncementAudience>('All School')
+  const [audience, setAudience] = useState<AnnouncementAudience>('All')
   const [priority, setPriority] = useState<AnnouncementPriority>('Normal')
   const [publishDate, setPublishDate] = useState(new Date().toISOString().split('T')[0])
   const [errors, setErrors] = useState<Record<string, string>>({})
@@ -51,7 +51,7 @@ export function AnnouncementForm({ onCancel }: AnnouncementFormProps) {
     if (status === 'Published') {
       setTitle('')
       setContent('')
-      setAudience('All School')
+      setAudience('All')
       setPriority('Normal')
       setPublishDate(new Date().toISOString().split('T')[0])
       setErrors({})
