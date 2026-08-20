@@ -539,15 +539,21 @@ a { color: inherit; }
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 14px 20px;
+  padding: 16px 20px;
   border-bottom: 1px solid var(--color-border);
+  background: var(--color-background);
 }
 .teachers-table-count { color: var(--color-text-muted); font-size: 12px; font-weight: 500; }
 .teachers-table-wrapper { overflow-x: auto; }
-.teachers-table { width: 100%; border-collapse: collapse; font-size: 13px; }
-.teachers-table thead tr { border-bottom: 1px solid var(--color-border); }
+.teachers-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 13px;
+  table-layout: auto;
+}
+.teachers-table thead tr { border-bottom: 2px solid var(--color-border); }
 .teachers-table th {
-  padding: 10px 16px;
+  padding: 10px 10px;
   color: var(--color-text-muted);
   font-size: 11px;
   font-weight: 600;
@@ -557,6 +563,12 @@ a { color: inherit; }
   white-space: nowrap;
   background: var(--color-background);
 }
+.teachers-table th:first-child { width: 26%; }
+.teachers-table th:nth-child(2) { width: 10%; }
+.teachers-table th:nth-child(3) { width: 15%; }
+.teachers-table th:nth-child(4) { width: 18%; }
+.teachers-table th:nth-child(5) { width: 13%; }
+.teachers-table th:nth-child(6) { width: 12%; text-align: center; }
 .teachers-table__row {
   border-bottom: 1px solid var(--color-border);
   cursor: pointer;
@@ -565,13 +577,63 @@ a { color: inherit; }
 .teachers-table__row:last-child { border-bottom: 0; }
 .teachers-table__row:hover { background: var(--color-primary-light); }
 .teachers-table__row:focus-visible { outline: 3px solid var(--color-focus-primary); outline-offset: -2px; }
-.teachers-table td { padding: 14px 16px; color: var(--color-text-secondary); vertical-align: middle; }
-.teachers-table__teacher-cell { display: flex; align-items: center; gap: 12px; }
-.teachers-table__teacher-info { display: grid; gap: 2px; min-width: 0; }
-.teachers-table__teacher-info strong { color: var(--color-text-primary); font-weight: 600; white-space: nowrap; }
-.teachers-table__teacher-info small { color: var(--color-text-muted); font-size: 11px; white-space: nowrap; }
-.teachers-table__id { font-family: monospace; font-size: 12px; color: var(--color-text-muted); }
-.teachers-table__subjects { max-width: 200px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; display: block; }
+.teachers-table td {
+  padding: 12px 12px;
+  color: var(--color-text-secondary);
+  vertical-align: middle;
+  text-align: left;
+  font-size: 14px;
+}
+.teachers-table td:nth-child(1) { width: 26%; }
+.teachers-table td:nth-child(2) { width: 10%; }
+.teachers-table td:nth-child(3) { width: 15%; }
+.teachers-table td:nth-child(4) { width: 18%; }
+.teachers-table td:nth-child(5) { width: 13%; }
+.teachers-table td:nth-child(6) { width: 12%; text-align: center; }
+.teachers-table__teacher-cell {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  min-width: 0;
+}
+.teachers-table__teacher-info {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  min-width: 0;
+  flex: 1;
+}
+.teachers-table__teacher-info strong {
+  color: var(--color-text-primary);
+  font-weight: 600;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.teachers-table__teacher-info small {
+  color: var(--color-text-muted);
+  font-size: 11px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.teachers-table__id {
+  font-family: monospace;
+  font-size: 12px;
+  color: var(--color-text-muted);
+  white-space: nowrap;
+}
+.teachers-table__subjects {
+  display: block;
+  max-width: 100%;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.teachers-table__classes {
+  display: block;
+  white-space: nowrap;
+}
 
 /* â”€â”€ Edit Teacher Modal â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
 .modal-backdrop {
@@ -656,12 +718,17 @@ a { color: inherit; }
   .teacher-detail-grid { grid-template-columns: 1fr 1fr; }
 }
 
-@media (max-width: 820px) {
+@media (max-width: 900px) {
   .teacher-stats-row { grid-template-columns: repeat(2, minmax(0, 1fr)); }
   .teacher-detail-grid { grid-template-columns: 1fr; }
   .teachers-table th:nth-child(4), .teachers-table td:nth-child(4) { display: none; }
   .modal-form__grid { grid-template-columns: 1fr; }
   .teacher-detail-page-header { flex-wrap: wrap; }
+}
+
+@media (max-width: 600px) {
+  .teachers-table th:nth-child(3), .teachers-table td:nth-child(3),
+  .teachers-table th:nth-child(5), .teachers-table td:nth-child(5) { display: none; }
 }
 
 @media (max-width: 600px) {
