@@ -11,6 +11,7 @@ const navItems: DashboardNavItem[] = [
   { label: 'Attendance', icon: 'clipboardCheck', href: '#attendance' },
   { label: 'Assignments', icon: 'layers', href: '#assignments' },
   { label: 'Announcements', icon: 'bookOpen', href: '/announcements' },
+  { label: 'Announcement Form', icon: 'plusCircle', href: '/announcements/new' },
 ]
 
 interface DashboardLayoutProps {

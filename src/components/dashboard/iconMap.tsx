@@ -8,6 +8,7 @@ import {
   UserCheck,
   UserPlus,
   Users,
+  PlusCircle,
 } from 'lucide-react'
 import type { DashboardIconName } from '../../data/dashboardData'
 
@@ -21,5 +22,6 @@ export const dashboardIcons: Record<DashboardIconName, typeof Users> = {
   calendarCheck: CalendarCheck,
   userCheck: UserCheck,
   layers: Layers3,
+  plusCircle: PlusCircle,
 }
 

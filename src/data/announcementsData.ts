@@ -1,5 +1,5 @@
 export type AnnouncementStatus = 'Published' | 'Draft' | 'Scheduled'
-export type AnnouncementAudience = 'All' | 'Students' | 'Teachers' | 'Parents'
+export type AnnouncementAudience = 'All School' | 'Students' | 'Teachers' | 'Parents'
 export type AnnouncementPriority = 'High' | 'Normal' | 'Low'
 
 export interface Announcement {
