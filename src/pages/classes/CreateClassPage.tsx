@@ -131,8 +131,8 @@ export function CreateClassPage() {
         maximumStudents: Number(values.maximumStudents),
       })
       setCreatedClass(newClass)
-      // Brief pause so the user sees the success banner, then navigate to list
-      setTimeout(() => navigate('/classes'), 2000)
+      // Brief pause so the user sees the success banner, then navigate back to the dashboard classes section
+      setTimeout(() => navigate('/dashboard#classes'), 2000)
     } catch (err) {
       const message =
         err instanceof Error
@@ -366,7 +366,7 @@ export function CreateClassPage() {
               <Button
                 type="button"
                 variant="secondary"
-                onClick={() => navigate('/classes')}
+                onClick={() => navigate('/dashboard#classes')}
                 disabled={isSubmitting}
               >
                 Cancel
