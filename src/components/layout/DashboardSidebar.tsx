@@ -14,19 +14,8 @@ interface DashboardSidebarProps {
   activePath?: string
 }
 
-export function DashboardSidebar({ navItems, onNavigate, activePath }: DashboardSidebarProps) {
-  const navigate = useNavigate()
-  const currentPath = activePath ?? '/dashboard'
-
-  const handleLogout = () => {
-    onNavigate?.()
-    navigate('/login')
-  }
-
-  const handleProfileClick = () => {
-    onNavigate?.()
-    navigate('/profile')
-  }
+export function DashboardSidebar({ navItems, onNavigate }: DashboardSidebarProps) {
+  const location = useLocation()
 
   return (
     <aside className="dashboard-sidebar" aria-label="Main navigation">
@@ -42,8 +31,8 @@ export function DashboardSidebar({ navItems, onNavigate, activePath }: Dashboard
           {navItems.map((item) => {
             const Icon = dashboardIcons[item.icon]
             const isActive =
-              currentPath === item.href ||
-              (item.href !== '/dashboard' && currentPath.startsWith(item.href))
+              item.href === location.pathname ||
+              (item.href !== '/dashboard' && location.pathname.startsWith(item.href))
             return (
               <Link
                 className={`dashboard-nav__item${isActive ? ' dashboard-nav__item--active' : ''}`}
