@@ -18,8 +18,9 @@ npm run lint
 
 ## Architecture
 
-- `src/config/design-system.ts` is the single source of truth for brand colors, typography, spacing, radius, and shadows.
-- `src/styles/globals.css` mirrors those tokens as CSS variables and contains the shared visual language.
+- `DESIGN_SYSTEM.md` is the project-wide visual and implementation contract.
+- `src/styles/globals.css` contains the runtime CSS custom properties and shared visual language.
+- `src/config/design-system.ts` provides the typed token catalog for TypeScript consumers and must stay synchronized with the CSS tokens.
 - `src/components/ui` contains reusable `Button`, `Input`, `Label`, `Card`, `Badge`, `Divider`, and `Spinner` primitives.
 - `src/components/layout` contains the reusable `AuthLayout` and `PageContainer` shells.
 - `src/routes/AppRoutes.tsx` owns navigation for Login, Register, and Dashboard entry points.

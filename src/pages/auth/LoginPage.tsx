@@ -1,6 +1,6 @@
 import { useState, type FormEvent } from 'react'
 import { ArrowRight, Eye, EyeOff } from 'lucide-react'
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import { AuthLayout } from '../../components/layout/AuthLayout'
 import { Button } from '../../components/ui/Button'
 import { Card } from '../../components/ui/Card'
@@ -15,6 +15,7 @@ interface FormErrors {
 const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
 
 export function LoginPage() {
+  const navigate = useNavigate()
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
   const [showPassword, setShowPassword] = useState(false)
@@ -43,7 +44,9 @@ export function LoginPage() {
     event.preventDefault()
     const nextErrors = validate()
     setErrors(nextErrors)
-    setIsSubmitted(Object.keys(nextErrors).length === 0)
+    const isValid = Object.keys(nextErrors).length === 0
+    setIsSubmitted(isValid)
+    if (isValid) navigate('/dashboard')
   }
 
   return (
