@@ -8,7 +8,7 @@ const navItems: DashboardNavItem[] = [
   { label: 'Students', icon: 'users', href: '#students' },
   { label: 'Teachers', icon: 'graduationCap', href: '/teachers' },
   { label: 'Classes', icon: 'bookOpen', href: '#classes' },
-  { label: 'Attendance', icon: 'clipboardCheck', href: '#attendance' },
+  { label: 'Attendance', icon: 'clipboardCheck', href: '/attendance' },
   { label: 'Assignments', icon: 'layers', href: '#assignments' },
   { label: 'Announcements', icon: 'bookOpen', href: '#announcements' },
 ]
