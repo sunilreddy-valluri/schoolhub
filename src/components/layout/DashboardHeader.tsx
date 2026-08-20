@@ -1,13 +1,24 @@
 import { Bell, Menu } from 'lucide-react'
+import { useNavigate } from 'react-router-dom'
 
 interface DashboardHeaderProps {
   onMenuOpen: () => void
+  isMenuOpen?: boolean
 }
 
-export function DashboardHeader({ onMenuOpen }: DashboardHeaderProps) {
+export function DashboardHeader({ onMenuOpen, isMenuOpen }: DashboardHeaderProps) {
+  const navigate = useNavigate()
+
   return (
     <header className="dashboard-header">
-      <button className="dashboard-icon-button dashboard-menu-button" type="button" onClick={onMenuOpen} aria-label="Open navigation menu">
+      <button
+        className="dashboard-icon-button dashboard-menu-button"
+        type="button"
+        onClick={onMenuOpen}
+        aria-label="Open navigation menu"
+        aria-expanded={isMenuOpen}
+        aria-controls="mobile-navigation-dialog"
+      >
         <Menu size={21} aria-hidden="true" />
       </button>
       <div className="dashboard-header__copy">
@@ -20,7 +31,12 @@ export function DashboardHeader({ onMenuOpen }: DashboardHeaderProps) {
           <Bell size={19} aria-hidden="true" />
           <span className="notification-dot" aria-hidden="true" />
         </button>
-        <button className="dashboard-profile-button" type="button" aria-label="Open Suneel Reddy profile">
+        <button
+          className="dashboard-profile-button"
+          type="button"
+          aria-label="Open Suneel Reddy profile"
+          onClick={() => navigate('/profile')}
+        >
           <span className="dashboard-avatar dashboard-avatar--header" aria-hidden="true">SR</span>
         </button>
       </div>
