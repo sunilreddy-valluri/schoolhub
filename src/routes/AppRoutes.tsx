@@ -7,6 +7,8 @@ import { CreateClassPage } from '../pages/classes/CreateClassPage'
 import { CreateAssignmentPage } from '../pages/assignments/CreateAssignmentPage'
 import { AssignmentsPage } from '../pages/assignments/AssignmentsPage'
 import { AttendancePage } from '../pages/dashboard/AttendancePage'
+import { TeachersListPage } from '../pages/teachers/TeachersListPage'
+import { TeacherDetailPage } from '../pages/teachers/TeacherDetailPage'
 
 export function AppRoutes() {
   return (
@@ -19,6 +21,8 @@ export function AppRoutes() {
       <Route path="/assignments" element={<AssignmentsPage />} />
       <Route path="/assignments/new" element={<CreateAssignmentPage />} />
       <Route path="/attendance" element={<AttendancePage />} />
+      <Route path="/teachers" element={<TeachersListPage />} />
+      <Route path="/teachers/:id" element={<TeacherDetailPage />} />
       <Route path="*" element={<Navigate to="/login" replace />} />
     </Routes>
   )
