@@ -44,3 +44,46 @@ export const sampleStudentAttendance: StudentAttendance = {
         { id: '20', date: new Date('2023-12-11'), status: 'Present' },
     ],
 }
+
+export interface SchoolAttendanceRecord {
+    id: string
+    studentId: string
+    studentName: string
+    grade: string
+    classId: string
+    status: AttendanceStatus
+    note?: string
+}
+
+export interface SchoolAttendanceSummary {
+    totalStudents: number
+    present: number
+    absent: number
+    late: number
+    excused: number
+    percentage: number
+}
+
+// Sample data for admin view
+
+export const sampleSchoolSummary: SchoolAttendanceSummary = {
+    totalStudents: 1250,
+    present: 1150,
+    absent: 45,
+    late: 35,
+    excused: 20,
+    percentage: 94.4
+}
+
+export const sampleSchoolRecords: SchoolAttendanceRecord[] = [
+    { id: 'rec-1', studentId: 'STU001', studentName: 'Bhargav', grade: '10', classId: '10-A', status: 'Present' },
+    { id: 'rec-2', studentId: 'STU002', studentName: 'Aditi', grade: '10', classId: '10-A', status: 'Late', note: 'Traffic' },
+    { id: 'rec-3', studentId: 'STU003', studentName: 'Rohan', grade: '10', classId: '10-B', status: 'Absent' },
+    { id: 'rec-4', studentId: 'STU004', studentName: 'Meera', grade: '9', classId: '9-C', status: 'Present' },
+    { id: 'rec-5', studentId: 'STU005', studentName: 'Karan', grade: '9', classId: '9-C', status: 'Excused', note: 'Medical' },
+    { id: 'rec-6', studentId: 'STU006', studentName: 'Priya', grade: '11', classId: '11-Sci', status: 'Present' },
+    { id: 'rec-7', studentId: 'STU007', studentName: 'Vikram', grade: '11', classId: '11-Sci', status: 'Late' },
+    { id: 'rec-8', studentId: 'STU008', studentName: 'Neha', grade: '12', classId: '12-Com', status: 'Present' },
+    { id: 'rec-9', studentId: 'STU009', studentName: 'Rahul', grade: '8', classId: '8-A', status: 'Absent' },
+    { id: 'rec-10', studentId: 'STU010', studentName: 'Sneha', grade: '8', classId: '8-B', status: 'Present' },
+]
