@@ -1,4 +1,5 @@
 import { GraduationCap, LogOut } from 'lucide-react'
+import { Link, useLocation } from 'react-router-dom'
 import { dashboardIcons } from '../dashboard/iconMap'
 
 export interface DashboardNavItem {
@@ -13,6 +14,18 @@ interface DashboardSidebarProps {
 }
 
 export function DashboardSidebar({ navItems, onNavigate }: DashboardSidebarProps) {
+  const { pathname } = useLocation()
+
+  /**
+   * A nav item is active when the current pathname starts with its href.
+   * Hash-only links (e.g. "#students") are never treated as active routes.
+   * The root "/" check is excluded to avoid false positives.
+   */
+  function isActive(href: string): boolean {
+    if (href.startsWith('#') || href === '/') return false
+    return pathname === href || pathname.startsWith(href + '/')
+  }
+
   return (
     <aside className="dashboard-sidebar" aria-label="Main navigation">
       <div className="dashboard-sidebar__top">
@@ -26,18 +39,34 @@ export function DashboardSidebar({ navItems, onNavigate }: DashboardSidebarProps
         <nav className="dashboard-nav" aria-label="School management">
           {navItems.map((item) => {
             const Icon = dashboardIcons[item.icon]
-            const isActive = item.href === '/dashboard'
+            const active = isActive(item.href)
+
+            // Hash links don't navigate to a real route — keep as plain <a>
+            if (item.href.startsWith('#')) {
+              return (
+                <a
+                  className="dashboard-nav__item"
+                  href={item.href}
+                  key={item.label}
+                  onClick={onNavigate}
+                >
+                  <Icon size={18} aria-hidden="true" />
+                  <span>{item.label}</span>
+                </a>
+              )
+            }
+
             return (
-              <a
-                className={`dashboard-nav__item${isActive ? ' dashboard-nav__item--active' : ''}`}
-                href={item.href}
+              <Link
+                className={`dashboard-nav__item${active ? ' dashboard-nav__item--active' : ''}`}
+                to={item.href}
                 key={item.label}
                 onClick={onNavigate}
-                aria-current={isActive ? 'page' : undefined}
+                aria-current={active ? 'page' : undefined}
               >
                 <Icon size={18} aria-hidden="true" />
                 <span>{item.label}</span>
-              </a>
+              </Link>
             )
           })}
         </nav>
