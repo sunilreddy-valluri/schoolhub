@@ -1,6 +1,7 @@
 import { DashboardLayout } from '../../components/layout/DashboardLayout'
 import { AttendanceOverview } from '../../components/dashboard/AttendanceOverview'
 import { ClassesSection } from '../../components/dashboard/ClassesSection'
+import { AssignmentsSection } from '../../components/dashboard/AssignmentsSection'
 import { QuickActions } from '../../components/dashboard/QuickActions'
 import { RecentActivity } from '../../components/dashboard/RecentActivity'
 import { StatCard } from '../../components/dashboard/StatCard'
@@ -33,6 +34,8 @@ export function DashboardPage() {
       <section className="dashboard-section" aria-label="Activity details">
         <RecentActivity />
       </section>
+
+      <AssignmentsSection />
 
       <ClassesSection />
     </DashboardLayout>
