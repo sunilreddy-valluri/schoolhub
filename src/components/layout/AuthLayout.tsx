@@ -3,9 +3,17 @@ import { ArrowUpRight, GraduationCap } from 'lucide-react'
 
 interface AuthLayoutProps {
   children: ReactNode
+  eyebrow?: string
+  heading?: ReactNode
+  description?: string
 }
 
-export function AuthLayout({ children }: AuthLayoutProps) {
+export function AuthLayout({
+  children,
+  eyebrow = 'The calm center of your school',
+  heading = 'Manage your school, simply.',
+  description = 'Everything you need to manage students, teachers, classes, and daily school operations in one place.',
+}: AuthLayoutProps) {
   return (
     <div className="auth-layout">
       <aside className="auth-layout__brand" aria-label="SchoolHub introduction">
@@ -17,11 +25,9 @@ export function AuthLayout({ children }: AuthLayoutProps) {
         </div>
 
         <div className="brand-message">
-          <span className="eyebrow">The calm center of your school</span>
-          <h1>Manage your school, simply.</h1>
-          <p>
-            Everything you need to manage students, teachers, classes, and daily school operations in one place.
-          </p>
+          <span className="eyebrow">{eyebrow}</span>
+          <h1>{heading}</h1>
+          <p>{description}</p>
         </div>
 
         <div className="brand-footer">
