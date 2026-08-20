@@ -1,4 +1,5 @@
 import { GraduationCap, LogOut } from 'lucide-react'
+import { Link } from 'react-router-dom'
 import { dashboardIcons } from '../dashboard/iconMap'
 
 export interface DashboardNavItem {
@@ -10,9 +11,11 @@ export interface DashboardNavItem {
 interface DashboardSidebarProps {
   navItems: DashboardNavItem[]
   onNavigate?: () => void
+  activePath?: string
 }
 
-export function DashboardSidebar({ navItems, onNavigate }: DashboardSidebarProps) {
+export function DashboardSidebar({ navItems, onNavigate, activePath }: DashboardSidebarProps) {
+  const currentPath = activePath ?? '/dashboard'
   return (
     <aside className="dashboard-sidebar" aria-label="Main navigation">
       <div className="dashboard-sidebar__top">
@@ -26,18 +29,18 @@ export function DashboardSidebar({ navItems, onNavigate }: DashboardSidebarProps
         <nav className="dashboard-nav" aria-label="School management">
           {navItems.map((item) => {
             const Icon = dashboardIcons[item.icon]
-            const isActive = item.href === '/dashboard'
+            const isActive = item.href === currentPath
             return (
-              <a
+              <Link
                 className={`dashboard-nav__item${isActive ? ' dashboard-nav__item--active' : ''}`}
-                href={item.href}
+                to={item.href}
                 key={item.label}
                 onClick={onNavigate}
                 aria-current={isActive ? 'page' : undefined}
               >
                 <Icon size={18} aria-hidden="true" />
                 <span>{item.label}</span>
-              </a>
+              </Link>
             )
           })}
         </nav>

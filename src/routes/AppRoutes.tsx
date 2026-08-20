@@ -4,6 +4,7 @@ import { RegisterPage } from '../pages/auth/RegisterPage'
 import { DashboardPage } from '../pages/dashboard/DashboardPage'
 import { AnnouncementsPage } from '../pages/announcements/AnnouncementsPage'
 import { CreateAnnouncementPage } from '../pages/announcements/CreateAnnouncementPage'
+import { CalendarPage } from '../pages/dashboard/CalendarPage'
 
 export function AppRoutes() {
   return (
@@ -13,6 +14,7 @@ export function AppRoutes() {
       <Route path="/dashboard" element={<DashboardPage />} />
       <Route path="/announcements" element={<AnnouncementsPage />} />
       <Route path="/announcements/new" element={<CreateAnnouncementPage />} />
+      <Route path="/calendar" element={<CalendarPage />} />
       <Route path="*" element={<Navigate to="/login" replace />} />
     </Routes>
   )
