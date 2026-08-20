@@ -4,6 +4,7 @@ import { RegisterPage } from '../pages/auth/RegisterPage'
 import { DashboardPage } from '../pages/dashboard/DashboardPage'
 import { CalendarPage } from '../pages/dashboard/CalendarPage'
 import { AttendancePage } from '../pages/dashboard/AttendancePage'
+import { AdminAttendancePage } from '../pages/dashboard/AdminAttendancePage'
 import { ClassDetailsPage } from '../pages/dashboard/ClassDetailsPage'
 import { ClassesPage } from '../pages/classes/ClassesPage'
 import { CreateClassPage } from '../pages/classes/CreateClassPage'
@@ -22,7 +23,7 @@ export function AppRoutes() {
       <Route path="/register" element={<RegisterPage />} />
       <Route path="/dashboard" element={<DashboardPage />} />
       <Route path="/calendar" element={<CalendarPage />} />
-      <Route path="/attendance" element={<AttendancePage />} />
+      <Route path="/attendance" element={<AdminAttendancePage />} />
       <Route path="/students" element={<AttendancePage />} />
       <Route path="/classes" element={<ClassesPage />} />
       <Route path="/classes/new" element={<CreateClassPage />} />
