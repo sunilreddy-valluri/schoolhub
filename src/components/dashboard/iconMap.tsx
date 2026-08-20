@@ -5,6 +5,7 @@ import {
   GraduationCap,
   Layers3,
   School,
+  User,
   UserCheck,
   UserPlus,
   Users,
@@ -23,5 +24,6 @@ export const dashboardIcons: Record<DashboardIconName, typeof Users> = {
   userCheck: UserCheck,
   layers: Layers3,
   plusCircle: PlusCircle,
+  user: User,
 }
 
