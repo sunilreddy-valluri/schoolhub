@@ -3,6 +3,7 @@ import { DashboardLayout } from '../../components/layout/DashboardLayout'
 import { AnnouncementsList } from '../../components/announcements/AnnouncementsList'
 import { CreateAnnouncementModal } from '../../components/announcements/CreateAnnouncementModal'
 import { mockAnnouncements, type Announcement } from '../../data/announcementsData'
+import { Plus } from 'lucide-react'
 import { Plus, BellRing, ChevronRight } from 'lucide-react'
 import { Button } from '../../components/ui/Button'
 
@@ -46,6 +47,15 @@ export function AnnouncementsPage() {
           <p className="mt-2 text-[var(--color-text-secondary)] text-sm">Manage and publish important updates to your school community.</p>
         </div>
         
+        <Button onClick={() => setIsModalOpen(true)} className="whitespace-nowrap shrink-0">
+          <Plus className="w-5 h-5 mr-2" />
+          Create Announcement
+        </Button>
+      </div>
+
+      <div className="mt-8">
+        <AnnouncementsList 
+          announcements={announcements} 
         <Button onClick={() => setIsModalOpen(true)} className="whitespace-nowrap shrink-0 shadow-lg shadow-blue-500/20 hover:shadow-blue-500/40 transition-shadow">
           <Plus className="w-5 h-5 mr-2" />
           New Announcement
@@ -102,6 +112,20 @@ export function AnnouncementsPage() {
         onSubmit={handleCreate}
       />
 
+      {/* Simple View Modal */}
+      {viewingAnnouncement && (
+        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/50 backdrop-blur-sm">
+          <div className="bg-[var(--color-surface)] border border-[var(--color-border)] rounded-[var(--radius-large)] shadow-2xl p-8 w-full max-w-2xl animate-in fade-in zoom-in-95">
+            <h2 className="text-2xl font-bold text-[var(--color-text-primary)] mb-4">{viewingAnnouncement.title}</h2>
+            <div className="flex gap-3 mb-6">
+              <span className="text-sm text-[var(--color-text-muted)]">By {viewingAnnouncement.author}</span>
+              <span className="text-sm text-[var(--color-text-muted)]">•</span>
+              <span className="text-sm text-[var(--color-text-muted)]">{new Date(viewingAnnouncement.date).toLocaleDateString()}</span>
+            </div>
+            <div className="bg-[var(--color-background)] rounded-[var(--radius-default)] p-6 mb-8 text-[var(--color-text-secondary)]">
+              {viewingAnnouncement.content}
+            </div>
+            <div className="flex justify-end pt-4 border-t border-[var(--color-border)]">
       {/* Modern View Modal */}
       {viewingAnnouncement && (
         <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/60 backdrop-blur-sm transition-opacity">

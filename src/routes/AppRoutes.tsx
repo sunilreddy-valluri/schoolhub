@@ -2,6 +2,8 @@ import { Navigate, Route, Routes } from 'react-router-dom'
 import { LoginPage } from '../pages/auth/LoginPage'
 import { RegisterPage } from '../pages/auth/RegisterPage'
 import { DashboardPage } from '../pages/dashboard/DashboardPage'
+import { AnnouncementsPage } from '../pages/announcements/AnnouncementsPage'
+import { CreateAnnouncementPage } from '../pages/announcements/CreateAnnouncementPage'
 import { CalendarPage } from '../pages/dashboard/CalendarPage'
 import { AttendancePage } from '../pages/dashboard/AttendancePage'
 import { ClassDetailsPage } from '../pages/dashboard/ClassDetailsPage'
@@ -21,6 +23,8 @@ export function AppRoutes() {
       <Route path="/login" element={<LoginPage />} />
       <Route path="/register" element={<RegisterPage />} />
       <Route path="/dashboard" element={<DashboardPage />} />
+      <Route path="/announcements" element={<AnnouncementsPage />} />
+      <Route path="/announcements/new" element={<CreateAnnouncementPage />} />
       <Route path="/calendar" element={<CalendarPage />} />
       <Route path="/attendance" element={<AttendancePage />} />
       <Route path="/students" element={<AttendancePage />} />
