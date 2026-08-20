@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+﻿@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
 @import 'tailwindcss';
 
 :root {
@@ -340,78 +340,10 @@ a { color: inherit; }
   .activity-item time { grid-column: 2; margin-top: -7px; }
 }
 
-/* ── Teacher Profile Page ───────────────────────────────────────────── */
-.teacher-profile-layout {
-  display: grid;
-  grid-template-columns: 280px minmax(0, 1fr);
-  gap: 20px;
-  align-items: start;
-}
 
-/* Teacher list panel */
-.teacher-list-panel {
-  padding: 0;
-  overflow: hidden;
-}
-.teacher-list-panel__header {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 16px 20px;
-  border-bottom: 1px solid var(--color-border);
-}
-.teacher-list-panel__title {
-  color: var(--color-text-primary);
-  font-size: 13px;
-  font-weight: 600;
-}
-.teacher-list {
-  display: grid;
-  gap: 0;
-  padding: 8px;
-  margin: 0;
-  list-style: none;
-}
-.teacher-list-item {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  width: 100%;
-  min-height: 56px;
-  padding: 8px 12px;
-  background: transparent;
-  border: 0;
-  border-radius: var(--radius-default);
-  text-align: left;
-  transition: background-color 150ms ease;
-}
-.teacher-list-item:hover { background: var(--color-background); }
-.teacher-list-item--active { background: var(--color-primary-light); }
-.teacher-list-item--active:hover { background: var(--color-primary-light); }
-.teacher-list-item__info {
-  display: grid;
-  min-width: 0;
-  flex: 1;
-  gap: 3px;
-}
-.teacher-list-item__info strong {
-  overflow: hidden;
-  color: var(--color-text-primary);
-  font-size: 13px;
-  font-weight: 600;
-  text-overflow: ellipsis;
-  white-space: nowrap;
-}
-.teacher-list-item--active .teacher-list-item__info strong { color: var(--color-primary); }
-.teacher-list-item__info small {
-  overflow: hidden;
-  color: var(--color-text-muted);
-  font-size: 11px;
-  text-overflow: ellipsis;
-  white-space: nowrap;
-}
+/* â”€â”€ Teacher Profile Page â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
 
-/* Teacher avatar */
+/* Shared avatar */
 .teacher-avatar {
   display: grid;
   flex-shrink: 0;
@@ -421,25 +353,46 @@ a { color: inherit; }
 }
 .teacher-avatar--sm { width: 34px; height: 34px; font-size: 11px; }
 .teacher-avatar--lg { width: 64px; height: 64px; font-size: 20px; }
-.teacher-avatar--active  { color: var(--color-primary);      background: var(--color-primary-light);  border: 1px solid var(--color-primary-border); }
-.teacher-avatar--on-leave { color: var(--color-warning-text); background: var(--color-warning-light);  border: 1px solid #fcd34d; }
-.teacher-avatar--inactive { color: var(--color-text-secondary); background: var(--color-background); border: 1px solid var(--color-border); }
+.teacher-avatar--active   { color: var(--color-primary);       background: var(--color-primary-light);  border: 1px solid var(--color-primary-border); }
+.teacher-avatar--on-leave { color: var(--color-warning-text);  background: var(--color-warning-light);  border: 1px solid #fcd34d; }
+.teacher-avatar--inactive { color: var(--color-text-secondary); background: var(--color-background);   border: 1px solid var(--color-border); }
 
 /* Status dot */
-.status-dot {
-  flex-shrink: 0;
-  width: 8px;
-  height: 8px;
-  border-radius: 50%;
-}
-.status-dot--active  { background: var(--color-success); }
+.status-dot { flex-shrink: 0; width: 8px; height: 8px; border-radius: 50%; }
+.status-dot--active   { background: var(--color-success); }
 .status-dot--on-leave { background: var(--color-warning); }
 .status-dot--inactive { background: var(--color-text-muted); }
 
-/* Teacher profile detail column */
+/* â”€â”€ Teacher detail column â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
 .teacher-profile-detail { display: grid; gap: 16px; }
 
-/* Profile header card */
+/* â”€â”€ Back button + page heading row â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
+.teacher-detail-page-header {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin-bottom: 20px;
+}
+.teacher-detail-page-header__title { display: grid; gap: 2px; }
+.teacher-detail-page-header__title .section-kicker { margin-bottom: 0; }
+.teacher-detail-page-header__title h2 {
+  margin: 0;
+  font-size: 18px;
+  font-weight: 600;
+  letter-spacing: -0.02em;
+  line-height: 1.3;
+}
+.teacher-back-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  min-height: 36px;
+  padding: 0 14px;
+  font-size: 13px;
+  flex-shrink: 0;
+}
+
+/* â”€â”€ Profile header card â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
 .teacher-profile-header {
   display: flex;
   align-items: center;
@@ -464,16 +417,8 @@ a { color: inherit; }
   letter-spacing: -0.03em;
   line-height: 1.2;
 }
-.teacher-profile-dept {
-  margin: 0;
-  color: var(--color-text-secondary);
-  font-size: 13px;
-}
-.teacher-profile-contacts {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 16px;
-}
+.teacher-profile-dept { margin: 0; color: var(--color-text-secondary); font-size: 13px; }
+.teacher-profile-contacts { display: flex; flex-wrap: wrap; gap: 16px; }
 .teacher-contact-link {
   display: inline-flex;
   align-items: center;
@@ -486,7 +431,7 @@ a { color: inherit; }
 .teacher-contact-link:hover { color: var(--color-primary); }
 .teacher-edit-btn { min-height: 38px; font-size: 13px; flex-shrink: 0; }
 
-/* Stats row */
+/* â”€â”€ Stats row â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
 .teacher-stats-row {
   display: grid;
   grid-template-columns: repeat(4, minmax(0, 1fr));
@@ -516,22 +461,16 @@ a { color: inherit; }
   letter-spacing: -0.03em;
   line-height: 1;
 }
-.teacher-stat-card__label {
-  color: var(--color-text-primary);
-  font-size: 12px;
-  font-weight: 600;
-}
-.teacher-stat-card__sub { color: var(--color-text-muted); font-size: 11px; }
+.teacher-stat-card__label { color: var(--color-text-primary); font-size: 12px; font-weight: 600; }
+.teacher-stat-card__sub   { color: var(--color-text-muted); font-size: 11px; }
 
-/* Detail grid */
+/* â”€â”€ Detail grid (3 cards side-by-side) â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
 .teacher-detail-grid {
   display: grid;
   grid-template-columns: minmax(0, 1fr) minmax(0, 1.4fr) minmax(0, 1fr);
   gap: 16px;
   align-items: start;
 }
-
-/* Generic detail card */
 .teacher-detail-card { padding: 20px; }
 .teacher-detail-card__header {
   display: flex;
@@ -554,11 +493,7 @@ a { color: inherit; }
   letter-spacing: 0.04em;
   text-transform: uppercase;
 }
-.teacher-info-item__value {
-  color: var(--color-text-primary);
-  font-size: 13px;
-  font-weight: 500;
-}
+.teacher-info-item__value { color: var(--color-text-primary); font-size: 13px; font-weight: 500; }
 
 /* Subjects list */
 .teacher-subjects-list { display: grid; gap: 16px; margin: 0; padding: 0; list-style: none; }
@@ -579,7 +514,7 @@ a { color: inherit; }
   font-weight: 500;
 }
 
-/* Classes list */
+/* Assigned classes list */
 .teacher-classes-list { display: grid; gap: 0; margin: 0; padding: 0; list-style: none; }
 .teacher-classes-item {
   display: flex;
@@ -596,37 +531,10 @@ a { color: inherit; }
   font-variant-numeric: tabular-nums;
   min-width: 20px;
 }
-.teacher-classes-item__name {
-  flex: 1;
-  color: var(--color-text-primary);
-  font-size: 13px;
-  font-weight: 500;
-}
+.teacher-classes-item__name { flex: 1; color: var(--color-text-primary); font-size: 13px; font-weight: 500; }
 
-/* Responsive adjustments */
-@media (max-width: 1200px) {
-  .teacher-profile-layout { grid-template-columns: 240px minmax(0, 1fr); }
-  .teacher-stats-row { grid-template-columns: repeat(2, minmax(0, 1fr)); }
-  .teacher-detail-grid { grid-template-columns: 1fr 1fr; }
-}
-
-@media (max-width: 820px) {
-  .teacher-profile-layout { grid-template-columns: 1fr; }
-  .teacher-stats-row { grid-template-columns: repeat(2, minmax(0, 1fr)); }
-  .teacher-detail-grid { grid-template-columns: 1fr; }
-}
-
-@media (max-width: 480px) {
-  .teacher-stats-row { grid-template-columns: 1fr 1fr; gap: 8px; }
-  .teacher-stat-card { padding: 14px 16px; gap: 10px; }
-  .teacher-stat-card__value { font-size: 17px; }
-  .teacher-profile-header { flex-direction: column; align-items: flex-start; }
-}
-
-
-/* ── Teachers List Page ─────────────────────────────────────────────── */
+/* â”€â”€ Teachers list table â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
 .teachers-table-card { overflow: hidden; padding: 0; }
-
 .teachers-table-toolbar {
   display: flex;
   align-items: center;
@@ -634,11 +542,7 @@ a { color: inherit; }
   padding: 14px 20px;
   border-bottom: 1px solid var(--color-border);
 }
-.teachers-table-count {
-  color: var(--color-text-muted);
-  font-size: 12px;
-  font-weight: 500;
-}
+.teachers-table-count { color: var(--color-text-muted); font-size: 12px; font-weight: 500; }
 .teachers-table-wrapper { overflow-x: auto; }
 .teachers-table { width: 100%; border-collapse: collapse; font-size: 13px; }
 .teachers-table thead tr { border-bottom: 1px solid var(--color-border); }
@@ -669,19 +573,7 @@ a { color: inherit; }
 .teachers-table__id { font-family: monospace; font-size: 12px; color: var(--color-text-muted); }
 .teachers-table__subjects { max-width: 200px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; display: block; }
 
-/* ── Teacher Detail Page Header ─────────────────────────────────────── */
-.teacher-detail-page-header {
-  display: flex;
-  align-items: center;
-  gap: 16px;
-  margin-bottom: 20px;
-}
-.teacher-detail-page-header__title { display: grid; gap: 2px; }
-.teacher-detail-page-header__title .section-kicker { margin-bottom: 0; }
-.teacher-detail-page-header__title h2 { margin: 0; font-size: 18px; font-weight: 600; letter-spacing: -0.02em; line-height: 1.3; }
-.teacher-back-btn { display: inline-flex; align-items: center; gap: 6px; min-height: 36px; padding: 0 14px; font-size: 13px; flex-shrink: 0; }
-
-/* ── Edit Modal ─────────────────────────────────────────────────────── */
+/* â”€â”€ Edit Teacher Modal â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
 .modal-backdrop {
   position: fixed;
   inset: 0;
@@ -719,7 +611,14 @@ a { color: inherit; }
   background: var(--color-surface);
   border-bottom: 1px solid var(--color-border);
 }
-.modal-panel__title { margin: 6px 0 0; color: var(--color-text-primary); font-size: 17px; font-weight: 700; letter-spacing: -0.03em; line-height: 1.2; }
+.modal-panel__title {
+  margin: 6px 0 0;
+  color: var(--color-text-primary);
+  font-size: 17px;
+  font-weight: 700;
+  letter-spacing: -0.03em;
+  line-height: 1.2;
+}
 .modal-panel__close-btn {
   display: grid;
   flex-shrink: 0;
@@ -751,14 +650,28 @@ a { color: inherit; }
 .modal-form__actions { display: flex; gap: 10px; }
 .modal-form__footer .form-success { flex: 1; }
 
-@media (max-width: 560px) {
+/* â”€â”€ Responsive â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
+@media (max-width: 1200px) {
+  .teacher-stats-row { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .teacher-detail-grid { grid-template-columns: 1fr 1fr; }
+}
+
+@media (max-width: 820px) {
+  .teacher-stats-row { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .teacher-detail-grid { grid-template-columns: 1fr; }
+  .teachers-table th:nth-child(4), .teachers-table td:nth-child(4) { display: none; }
   .modal-form__grid { grid-template-columns: 1fr; }
   .teacher-detail-page-header { flex-wrap: wrap; }
 }
-@media (max-width: 820px) {
-  .teachers-table th:nth-child(4), .teachers-table td:nth-child(4) { display: none; }
-}
+
 @media (max-width: 600px) {
   .teachers-table th:nth-child(3), .teachers-table td:nth-child(3),
   .teachers-table th:nth-child(5), .teachers-table td:nth-child(5) { display: none; }
+}
+
+@media (max-width: 480px) {
+  .teacher-stats-row { grid-template-columns: 1fr 1fr; gap: 8px; }
+  .teacher-stat-card { padding: 14px 16px; gap: 10px; }
+  .teacher-stat-card__value { font-size: 17px; }
+  .teacher-profile-header { flex-direction: column; align-items: flex-start; }
 }
