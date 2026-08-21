@@ -5,6 +5,7 @@ import { DashboardPage } from '../pages/dashboard/DashboardPage'
 import { CalendarPage } from '../pages/dashboard/CalendarPage'
 import { AttendancePage } from '../pages/dashboard/AttendancePage'
 import { AdminAttendancePage } from '../pages/dashboard/AdminAttendancePage'
+import { MarkAttendancePage } from '../pages/dashboard/MarkAttendancePage'
 import { ClassDetailsPage } from '../pages/dashboard/ClassDetailsPage'
 import { ClassesPage } from '../pages/classes/ClassesPage'
 import { CreateClassPage } from '../pages/classes/CreateClassPage'
@@ -24,6 +25,7 @@ export function AppRoutes() {
       <Route path="/dashboard" element={<DashboardPage />} />
       <Route path="/calendar" element={<CalendarPage />} />
       <Route path="/attendance" element={<AdminAttendancePage />} />
+      <Route path="/attendance/mark" element={<MarkAttendancePage />} />
       <Route path="/students" element={<AttendancePage />} />
       <Route path="/classes" element={<ClassesPage />} />
       <Route path="/classes/new" element={<CreateClassPage />} />
