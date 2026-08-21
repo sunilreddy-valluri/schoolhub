@@ -16,6 +16,7 @@ import { AssignmentsPage } from '../pages/assignments/AssignmentsPage'
 import { CreateAssignmentPage } from '../pages/assignments/CreateAssignmentPage'
 import { AnnouncementsPage } from '../pages/announcements/AnnouncementsPage'
 import { CreateAnnouncementPage } from '../pages/announcements/CreateAnnouncementPage'
+import { NotificationsPage } from '../pages/dashboard/NotificationsPage'
 
 export function AppRoutes() {
   return (
@@ -38,6 +39,7 @@ export function AppRoutes() {
       <Route path="/assignments/new" element={<CreateAssignmentPage />} />
       <Route path="/announcements" element={<AnnouncementsPage />} />
       <Route path="/announcements/new" element={<CreateAnnouncementPage />} />
+      <Route path="/notifications" element={<NotificationsPage />} />
       <Route path="*" element={<Navigate to="/login" replace />} />
     </Routes>
   )

@@ -1,5 +1,6 @@
-import { Bell, Menu } from 'lucide-react'
+import { Menu } from 'lucide-react'
 import { useNavigate } from 'react-router-dom'
+import { NotificationDropdown } from '../notifications/NotificationDropdown'
 
 interface DashboardHeaderProps {
   onMenuOpen: () => void
@@ -27,10 +28,7 @@ export function DashboardHeader({ onMenuOpen, isMenuOpen }: DashboardHeaderProps
         <p>Here&apos;s what&apos;s happening at your school today.</p>
       </div>
       <div className="dashboard-header__actions">
-        <button className="dashboard-icon-button" type="button" aria-label="View notifications">
-          <Bell size={19} aria-hidden="true" />
-          <span className="notification-dot" aria-hidden="true" />
-        </button>
+        <NotificationDropdown />
         <button
           className="dashboard-profile-button"
           type="button"
