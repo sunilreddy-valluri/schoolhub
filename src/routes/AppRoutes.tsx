@@ -17,6 +17,7 @@ import { CreateAssignmentPage } from '../pages/assignments/CreateAssignmentPage'
 import { AnnouncementsPage } from '../pages/announcements/AnnouncementsPage'
 import { CreateAnnouncementPage } from '../pages/announcements/CreateAnnouncementPage'
 import { NotificationsPage } from '../pages/dashboard/NotificationsPage'
+import { UserProfilePage } from '../pages/profile/UserProfilePage'
 
 export function AppRoutes() {
   return (
@@ -34,7 +35,7 @@ export function AppRoutes() {
       <Route path="/teachers" element={<TeachersListPage />} />
       <Route path="/teachers/:id" element={<TeacherDetailPage />} />
       <Route path="/teachers-profile" element={<TeacherProfilePage />} />
-      <Route path="/profile" element={<TeacherProfilePage />} />
+      <Route path="/profile" element={<UserProfilePage />} />
       <Route path="/assignments" element={<AssignmentsPage />} />
       <Route path="/assignments/new" element={<CreateAssignmentPage />} />
       <Route path="/announcements" element={<AnnouncementsPage />} />

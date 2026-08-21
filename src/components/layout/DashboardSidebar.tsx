@@ -1,6 +1,7 @@
 import { GraduationCap, LogOut } from 'lucide-react'
 import { Link, useNavigate } from 'react-router-dom'
 import { dashboardIcons } from '../dashboard/iconMap'
+import { useUser } from '../../context/UserContext'
 
 export interface DashboardNavItem {
   label: string
@@ -16,6 +17,7 @@ interface DashboardSidebarProps {
 
 export function DashboardSidebar({ navItems, onNavigate, activePath }: DashboardSidebarProps) {
   const navigate = useNavigate()
+  const { profile } = useUser()
   const currentPath = activePath ?? '/dashboard'
 
   const handleLogout = () => {
@@ -27,6 +29,14 @@ export function DashboardSidebar({ navItems, onNavigate, activePath }: Dashboard
     onNavigate?.()
     navigate('/profile')
   }
+
+  // Derive initials from the user's name
+  const initials = profile.name
+    .split(' ')
+    .map((part) => part[0])
+    .join('')
+    .toUpperCase()
+    .slice(0, 2)
 
   return (
     <aside className="dashboard-sidebar" aria-label="Main navigation">
@@ -67,10 +77,16 @@ export function DashboardSidebar({ navItems, onNavigate, activePath }: Dashboard
           onClick={handleProfileClick}
           aria-label="View user profile"
         >
-          <span className="dashboard-avatar" aria-hidden="true">SR</span>
+          <span
+            className="dashboard-avatar"
+            aria-hidden="true"
+            style={{ backgroundColor: profile.avatarColor, color: '#ffffff', borderColor: 'transparent' }}
+          >
+            {initials}
+          </span>
           <span className="dashboard-user__details">
-            <strong>Suneel Reddy</strong>
-            <small>School Administrator</small>
+            <strong>{profile.name}</strong>
+            <small>{profile.role}</small>
           </span>
         </button>
         <button

@@ -3,6 +3,7 @@ import { GraduationCap, LogOut, X } from 'lucide-react'
 import { Link, useNavigate } from 'react-router-dom'
 import { dashboardIcons } from '../dashboard/iconMap'
 import type { DashboardNavItem } from './DashboardSidebar'
+import { useUser } from '../../context/UserContext'
 
 interface MobileDashboardNavProps {
   navItems: DashboardNavItem[]
@@ -13,6 +14,7 @@ interface MobileDashboardNavProps {
 
 export function MobileDashboardNav({ navItems, isOpen, onClose, activePath }: MobileDashboardNavProps) {
   const navigate = useNavigate()
+  const { profile } = useUser()
   const panelRef = useRef<HTMLDivElement>(null)
   const currentPath = activePath ?? '/dashboard'
 
@@ -48,6 +50,13 @@ export function MobileDashboardNav({ navItems, isOpen, onClose, activePath }: Mo
     onClose()
     navigate('/profile')
   }
+
+  const initials = profile.name
+    .split(' ')
+    .map((part) => part[0])
+    .join('')
+    .toUpperCase()
+    .slice(0, 2)
 
   return (
     <div
@@ -111,10 +120,16 @@ export function MobileDashboardNav({ navItems, isOpen, onClose, activePath }: Mo
             onClick={handleProfileClick}
             aria-label="View user profile"
           >
-            <span className="dashboard-avatar" aria-hidden="true">SR</span>
+            <span
+              className="dashboard-avatar"
+              aria-hidden="true"
+              style={{ backgroundColor: profile.avatarColor, color: '#ffffff', borderColor: 'transparent' }}
+            >
+              {initials}
+            </span>
             <span className="dashboard-user__details">
-              <strong>Suneel Reddy</strong>
-              <small>School Administrator</small>
+              <strong>{profile.name}</strong>
+              <small>{profile.role}</small>
             </span>
           </button>
           <button

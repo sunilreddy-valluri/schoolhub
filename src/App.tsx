@@ -1,6 +1,7 @@
 import { BrowserRouter } from 'react-router-dom'
 import { AppRoutes } from './routes/AppRoutes'
 import { NotificationProvider } from './context/NotificationContext'
+import { UserProvider } from './context/UserContext'
 
 /**
  * 🎓 SchoolHub Main Application Component
@@ -28,7 +29,9 @@ function App() {
   return (
     <BrowserRouter>
       <NotificationProvider>
-        <AppRoutes />
+        <UserProvider>
+          <AppRoutes />
+        </UserProvider>
       </NotificationProvider>
     </BrowserRouter>
   )
