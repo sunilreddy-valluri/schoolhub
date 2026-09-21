@@ -2,6 +2,7 @@ import {
   BookOpen,
   CalendarCheck,
   ClipboardCheck,
+  Compass,
   GraduationCap,
   Layers3,
   School,
@@ -23,5 +24,6 @@ export const dashboardIcons: Record<DashboardIconName, typeof Users> = {
   userCheck: UserCheck,
   layers: Layers3,
   user: User,
+  compass: Compass,
 }
 
