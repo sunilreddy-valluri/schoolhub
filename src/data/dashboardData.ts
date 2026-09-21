@@ -9,6 +9,7 @@ export type DashboardIconName =
   | 'userCheck'
   | 'layers'
   | 'user'
+  | 'compass'
 
 export interface Statistic {
   label: string

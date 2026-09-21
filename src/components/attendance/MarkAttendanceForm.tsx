@@ -3,7 +3,6 @@ import { Card } from '../ui/Card'
 import { Button } from '../ui/Button'
 import { Select } from '../ui/Select'
 import { Input } from '../ui/Input'
-import { Badge } from '../ui/Badge'
 import { sampleClassDetails, classes } from '../../data/classData'
 
 type AttendanceStatus = 'Present' | 'Absent' | 'Late'

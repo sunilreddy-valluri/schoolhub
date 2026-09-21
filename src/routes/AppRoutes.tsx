@@ -16,6 +16,7 @@ import { AssignmentsPage } from '../pages/assignments/AssignmentsPage'
 import { CreateAssignmentPage } from '../pages/assignments/CreateAssignmentPage'
 import { AnnouncementsPage } from '../pages/announcements/AnnouncementsPage'
 import { CreateAnnouncementPage } from '../pages/announcements/CreateAnnouncementPage'
+import { OnboardingPage } from '../pages/onboarding/OnboardingPage'
 
 export function AppRoutes() {
   return (
@@ -27,6 +28,7 @@ export function AppRoutes() {
       <Route path="/attendance" element={<AdminAttendancePage />} />
       <Route path="/attendance/mark" element={<MarkAttendancePage />} />
       <Route path="/students" element={<AttendancePage />} />
+      <Route path="/onboarding" element={<OnboardingPage />} />
       <Route path="/classes" element={<ClassesPage />} />
       <Route path="/classes/new" element={<CreateClassPage />} />
       <Route path="/class/:classId" element={<ClassDetailsPage />} />
